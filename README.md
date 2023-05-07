@@ -5,5 +5,6 @@ To run:
 1. git clone https://github.com/amalvinzent/Jest_react_testing.git
 2. cd Jest_react_testing
 3. npm i
-4. npm start - localhost
-5. npm test - to run test cases
+4. npm start (localhost)
+5. npm test (to run test cases)
+ 5.1. a (to run all tests)
