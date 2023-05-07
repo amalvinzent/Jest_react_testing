@@ -51,9 +51,13 @@ describe('Posts', () => {
       }
     }
     const { input } = setup()
-    fireEvent.change(input, { target: { value: 'search term' } })
+    await act(async () =>
+      fireEvent.change(input, { target: { value: 'search term' } })
+    )
     expect(input.value).toBe('search term')
-    fireEvent.change(input, { target: { value: '' } })
+    await act(
+      async () => await fireEvent.change(input, { target: { value: '' } })
+    )
     expect(input.value).toBe('')
   })
 
@@ -81,8 +85,10 @@ describe('Posts', () => {
       }
     }
     const { input } = setup()
-
-    fireEvent.change(input, { target: { value: 'new title 1' } })
+    await act(
+      async () =>
+        await fireEvent.change(input, { target: { value: 'new title 1' } })
+    )
     await waitFor(() => {
       screen.getByText('new title 1')
     })
@@ -112,7 +118,10 @@ describe('Posts', () => {
       }
     }
     const { input } = setup()
-    fireEvent.change(input, { target: { value: 'new title 3' } })
+    await act(
+      async () =>
+        await fireEvent.change(input, { target: { value: 'new title 3' } })
+    )
     await waitFor(() => {
       screen.getByText('No results found')
     })
