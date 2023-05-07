@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.items {
+  padding: 2rem;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
