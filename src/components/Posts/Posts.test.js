@@ -1,4 +1,10 @@
-const { render, screen, waitFor, fireEvent } = require('@testing-library/react')
+const {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  act
+} = require('@testing-library/react')
 import Posts from './Posts'
 import * as api from '../../middleware/api'
 
@@ -21,7 +27,7 @@ describe('Posts', () => {
         body: 'body 2'
       }
     ])
-    render(<Posts />)
+    await act(async () => render(<Posts />))
     await waitFor(() => {
       screen.getByText('title 1')
     })
@@ -29,7 +35,7 @@ describe('Posts', () => {
 
   it('should render error message when api fails', async () => {
     api.getPostsFromApi.mockRejectedValue({})
-    render(<Posts />)
+    await act(async () => render(<Posts />))
     await waitFor(() => {
       screen.getByText('Error')
     })
@@ -75,6 +81,7 @@ describe('Posts', () => {
       }
     }
     const { input } = setup()
+
     fireEvent.change(input, { target: { value: 'new title 1' } })
     await waitFor(() => {
       screen.getByText('new title 1')
