@@ -24,7 +24,7 @@ export default function Posts() {
     clearTimeout(timer)
     if (e.target.value) {
       const newTimer = setTimeout(() => {
-        const newData = data.filter(
+        const newData = data?.filter(
           (post) =>
             post.title.toLowerCase().includes(e.target.value) ||
             post.body.toLowerCase().includes(e.target.value)
@@ -55,9 +55,9 @@ export default function Posts() {
               onChange={filterData}
             ></input>
           </div>
-          {data.length > 0 ? (
+          {data?.length > 0 ? (
             <div className="items">
-              {data.map((post, i) => {
+              {data?.map((post, i) => {
                 return (
                   <ul key={i}>
                     <li>
@@ -68,7 +68,7 @@ export default function Posts() {
                 )
               })}
             </div>
-          ) : data.length === 0 ? (
+          ) : data?.length === 0 ? (
             <div className="center">
               <p>No results found</p>
             </div>
